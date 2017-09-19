@@ -1,4 +1,4 @@
-package com.example.eip;
+package com.example.eip.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
