@@ -12,7 +12,7 @@ public class AddressSplitter extends RouteBuilder {
                 .log("addresses: '${body}'")
                 .split()
                 .tokenizeXML("Address", "Addresses")
-                .streaming()
+                .setHeader("PersonId", xpath("/Address/PersonId/text()", String.class))
                 .to("jms:address");
     }
 }

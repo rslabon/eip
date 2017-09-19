@@ -12,7 +12,8 @@ public class PersonSplitter extends RouteBuilder {
                 .log("persons: '${body}'")
                 .split()
                 .tokenizeXML("Person", "Persons")
-                .streaming()
+                .setHeader("PersonId", xpath("/Person/Id/text()", String.class))
+                .log("stream: '${body}'")
                 .to("jms:person");
     }
 }

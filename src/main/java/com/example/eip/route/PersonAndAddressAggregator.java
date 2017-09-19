@@ -9,11 +9,11 @@ public class PersonAndAddressAggregator extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("jms:person").from("jms:address")
-                .log("PersonAndAddressAggregator: '${body}'")
-                .aggregate(new UseLatestAggregationStrategy())
-                    .body()
-                    .completionInterval(500)
-                .to("jms:person_address");
+//        from("jms:person").from("jms:address")
+//                .log("PersonAndAddressAggregator: '${body}'")
+//                .aggregate(new UseLatestAggregationStrategy())
+//                    .body()
+//                    .completionInterval(500)
+//                .to("jms:person_address");
     }
 }
