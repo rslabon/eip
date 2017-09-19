@@ -5,15 +5,15 @@ import org.apache.camel.processor.aggregate.UseLatestAggregationStrategy;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyAggregator extends RouteBuilder {
+public class PersonAndAddressAggregator extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("jms:zero").from("jms:one")
-                .log("MyAggregator: '${body}'")
+        from("jms:person").from("jms:address")
+                .log("PersonAndAddressAggregator: '${body}'")
                 .aggregate(new UseLatestAggregationStrategy())
                     .body()
                     .completionInterval(500)
-                .to("jms:zero_and_one");
+                .to("jms:person_address");
     }
 }
